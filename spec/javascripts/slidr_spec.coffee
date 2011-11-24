@@ -133,3 +133,10 @@ describe 'public methods', ->
   
   it 'get current slide', ->
     expect(slidr.get_current_slide()).toEqual(0)
+  
+  it 'is auto slide playing', ->
+    expect(slidr.is_auto_slide_playing()).toBeFalsy()
+    
+  it 'is auto slide playing', ->
+    slidr.auto_slide_start()
+    expect(slidr.is_auto_slide_playing()).toBeTruthy()
