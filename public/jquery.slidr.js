@@ -148,17 +148,24 @@
     
     // Go to slide with index 
     this.goto_slide = function(index) {
-      
+      set_current_slide(index);
     };
     
     // Go to next slide
     this.goto_next = function() {
-      
+      plugin.current_slide++;
+      set_current_slide(plugin.current_slide);
     };
     
     // Go to previous slide
     this.goto_prev = function() {
+      plugin.current_slide--;
       
+      // if current slide is less than 0, go to the last one
+      if ( plugin.current_slide < 0 )
+        plugin.current_slide = plugin.items.length - 1;
+      
+      set_current_slide(plugin.current_slide);
     };
 
     // call the "constructor"

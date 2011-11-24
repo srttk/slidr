@@ -112,7 +112,21 @@ describe 'event handlers', ->
   it 'image click', ->
     slidr.el.click()
     expect(slidr.current_slide).toEqual(1);
+
+describe 'slide methods', ->
   
-  #it 'new slide', ->
-  #  slidr.el.click()
-  #  expect(slidr.items.eq(0).css('zIndex')).toEqual(slidr.el.children().length);
+  template 'markup.html'
+  
+  # define var in scope
+  slidr =
+  
+  beforeEach ->
+    slidr = new $.slidr $('#example1')
+  
+  it 'next slide', ->
+    slidr.goto_next()
+    expect(slidr.current_slide).toEqual(1)
+  
+  it 'prev slide', ->
+    slidr.goto_prev()
+    expect(slidr.current_slide).toEqual(slidr.items.length-1)
