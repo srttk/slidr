@@ -149,6 +149,9 @@
     
     // Go to slide with index 
     this.goto_slide = function(index) {
+      
+      plugin.current_slide = index;
+      
       set_current_slide(index);
       
       return plugin.current_slide;
