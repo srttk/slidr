@@ -143,6 +143,11 @@
       clearInterval(plugin.autoslide);
     };
     
+    // is slider auto playing?
+    this.is_auto_slide_playing = function() {
+      return plugin.autoslide ? true : false;
+    };
+    
     // Go to slide with index 
     this.goto_slide = function(index) {
       
