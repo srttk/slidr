@@ -1,6 +1,7 @@
 # require scripts
 require '/jquery-1.7.1.js'
 require '/jquery.slidr.js'
+require '/jquery.slidr.thumbnails.js'
 
 # settings
 describe 'settings', ->
