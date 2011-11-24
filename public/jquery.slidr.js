@@ -50,8 +50,8 @@
       // attach event handlers
       attach_event_handlers();
       
-      // set current thumb
-      set_current_thumb();
+      // set current thumb to the current slide
+      set_current_thumb(plugin.current_slide);
       
     };
     
@@ -109,39 +109,57 @@
     };
     
     // private
-    // attack event handlers
+    // attach event handlers
     var attach_event_handlers = function() {
       
       plugin.el.click(function() {
+        
         plugin.current_slide++;
+
+        if (plugin.current_slide < plugin.items.length)
+          set_current_slide(plugin.current_slide);
+        
       });
       
     };
     
     // private
-    // set current thumbnail
-    var set_current_thumb = function() {
-      plugin.thumb_items.removeClass('current').eq(plugin.current_slide).addClass('current');
+    // set current thumbnail to the current slide
+    var set_current_thumb = function(index) { 
+      plugin.thumb_items.removeClass('current');
+      $(plugin.thumb_items[index]).addClass("current");
     };
     
-    
+    // set the current slide to current
+    var set_current_slide = function(index) {
+      
+      // remove class current from all the slides
+      plugin.items.removeClass("current");
+      
+      // add class current to the slide that should be showing
+      $(plugin.items[index]).addClass("current");
+      
+      // update thumb
+      set_current_thumb(index);
+
+    };
     
     // PUBLIC METHODS
     
     // Go to slide with index 
     this.goto_slide = function(index) {
       
-    }
+    };
     
     // Go to next slide
     this.goto_next = function() {
       
-    }
+    };
     
     // Go to previous slide
     this.goto_prev = function() {
       
-    }
+    };
 
     // call the "constructor"
     init();
