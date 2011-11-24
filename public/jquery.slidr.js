@@ -39,10 +39,10 @@
       
       // set current slide
       plugin.current_slide = 0;
-
+      
       // create elements
       create_elements();
-
+      
       // Run thumbs
       plugin.thumbs = new plugin.settings.thumbs(plugin, options);
       
@@ -51,10 +51,10 @@
       
       // attach event handlers
       attach_event_handlers();
-
+      
       // set current slide 
       set_current_slide(plugin.current_slide);
-
+      
     };
     
     // private
@@ -63,8 +63,6 @@
       
       // create wrapper
       plugin.el.addClass("slidr-slides").wrap('<div class="slidr-wrapper" />');
-      
-
       
     };
     
@@ -92,8 +90,6 @@
         
       });
       
-
-      
     };
     
     // private
@@ -102,16 +98,11 @@
       
       plugin.el.click(function() {
         
-        plugin.current_slide++;
-
-        if (plugin.current_slide < plugin.items.length)
-          set_current_slide(plugin.current_slide);
+        plugin.goto_next();
         
       });
       
     };
-    
-
     
     // set the current slide to current
     var set_current_slide = function(index) {
@@ -124,7 +115,7 @@
       
       // update thumb
       plugin.thumbs.set_current_thumb(index);
-
+      
     };
     
     // PUBLIC METHODS
