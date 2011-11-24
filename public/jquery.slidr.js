@@ -161,7 +161,12 @@
       
       return plugin.current_slide;
     };
-
+    
+    // get current slide
+    this.get_current_slide = function() {
+      return plugin.current_slide;
+    };
+    
     // call the "constructor"
     init();
   };

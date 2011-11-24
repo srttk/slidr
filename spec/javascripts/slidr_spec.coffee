@@ -113,7 +113,7 @@ describe 'event handlers', ->
     slidr.el.click()
     expect(slidr.current_slide).toEqual(1);
 
-describe 'slide methods', ->
+describe 'public methods', ->
   
   template 'markup.html'
   
@@ -130,3 +130,6 @@ describe 'slide methods', ->
   it 'prev slide', ->
     slidr.goto_prev()
     expect(slidr.current_slide).toEqual(slidr.items.length-1)
+  
+  it 'get current slide', ->
+    expect(slidr.get_current_slide()).toEqual(0)
