@@ -12,10 +12,11 @@
     
     // default settings
     var defaults = {
-      width         : 800,
-      height        : 500,
-      thumb_width   : 75,
-      thumb_height  : 75
+      width           : 800,
+      height          : 500,
+      thumb_width     : 75,
+      thumb_height    : 75,
+      slide_interval  : 2500
     };
     
     // use the plugin var to access the object everywhere
@@ -146,6 +147,20 @@
     };
     
     // PUBLIC METHODS
+    
+    // start auto slide
+    this.auto_slide_start = function() {
+      
+      plugin.autoslide = setInterval(function() {
+        plugin.goto_next();
+      }, plugin.settings.slide_interval);
+      
+    };
+    
+    // stop auto slide
+    this.auto_slide_stop = function() {
+      clearInterval(plugin.autoslide);
+    };
     
     // Go to slide with index 
     this.goto_slide = function(index) {
