@@ -36,12 +36,12 @@
       
       // set current slide
       plugin.current_slide = 0;
-      
-      // Run thumbs
-      plugin.thumbs = new plugin.settings.thumbs(plugin, options);
-      
+
       // create elements
       create_elements();
+
+      // Run thumbs
+      plugin.thumbs = new plugin.settings.thumbs(plugin, options);
       
       // set element styles
       set_styles();
@@ -178,26 +178,34 @@
     };
     var settings = $.extend(defaults, options);
     
+    // reference to obj
     var self = this;
     
-    // create thumbnails
-    plugin.el.clone().appendTo(plugin.el.parent()).attr('class', 'slidr-thumbs');
     
-    // store thumbs
-    self.thumbs = $('.slidr-thumbs');
+    var init = function() {
+      create_elements();
+    }
     
-    // store thumbs children
-    self.thumb_items = self.thumbs.children();
-    
-    // remove cloned id
-    self.thumbs.removeAttr('id');
-    
-    // set thumb list elements and its children to settings width and height
-    self.thumb_items.add(self.thumb_items.children()).css({
-      width   : settings.thumb_width+'px',
-      height  : settings.thumb_height+'px'
-    });
-    
+    // create the elements
+    var create_elements = function() {
+      // create thumbnailsc
+      plugin.el.clone().appendTo(plugin.el.parent()).attr('class', 'slidr-thumbs');
+
+      // store thumbs
+      self.el = $('.slidr-thumbs');
+
+      // store thumbs children
+      self.thumb_items = self.el.children();
+
+      // remove cloned id
+      self.el.removeAttr('id');
+
+      // set thumb list elements and its children to settings width and height
+      self.thumb_items.add(self.thumb_items.children()).css({
+        width   : settings.thumb_width+'px',
+        height  : settings.thumb_height+'px'
+      });
+    }
     
     // set current thumbnail to the current slide
     this.set_current_thumb = function(index) { 
@@ -205,6 +213,7 @@
       $(self.thumb_items[index]).addClass("current");
     };
     
+    init();
   }
   
 })(jQuery);

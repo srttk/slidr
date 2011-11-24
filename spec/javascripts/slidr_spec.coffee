@@ -41,13 +41,13 @@ describe 'elements', ->
     expect(slidr.el.siblings('.slidr-thumbs').length).toEqual(1)
   
   it 'thumb width', ->
-    expect(slidr.thumbs.children().width()).toEqual(slidr.settings.thumb_width)
+    expect(slidr.thumbs.el.children().width()).toEqual(slidr.settings.thumb_width)
   
   it 'thumb height', ->
-    expect(slidr.thumbs.children().height()).toEqual(slidr.settings.thumb_height)
+    expect(slidr.thumbs.el.children().height()).toEqual(slidr.settings.thumb_height)
   
   it 'current thumb', ->
-    expect(slidr.thumbs.children().eq(0).attr 'class').toEqual('current');
+    expect(slidr.thumbs.el.children().eq(0).attr 'class').toEqual('current');
 
 # check styles
 describe 'check styles', ->
@@ -96,7 +96,7 @@ describe 'check variables', ->
     expect(slidr.items).toBeDefined()
   
   it 'thumb items', ->
-    expect(slidr.thumb_items).toBeDefined();
+    expect(slidr.thumbs.el).toBeDefined();
 
 # event handlers
 describe 'event handlers', ->
