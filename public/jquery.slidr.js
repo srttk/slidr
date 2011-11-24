@@ -88,6 +88,17 @@
         
       });
       
+      $(document).keydown(function(e) {
+        switch (e.keyCode) {
+          case 37: // Left arrow key
+            plugin.goto_prev();
+          break;
+          case 39: // Right arrow key
+            plugin.goto_next();
+          break; 
+        }
+      });
+      
     };
     
     // set the current slide to current

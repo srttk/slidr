@@ -133,3 +133,29 @@ describe 'public methods', ->
   it 'is auto slide playing', ->
     slidr.auto_slide_start()
     expect(slidr.is_auto_slide_playing()).toBeTruthy()
+
+#describe 'keys', ->
+#  
+#  template 'markup.html'
+#  
+#  # define var in scope
+#  slidr =
+#  
+#  beforeEach ->
+#    slidr = new $.slidr $('#example1'), { width: 500, height: 300 }
+#  
+#  it 'slide left', ->
+#    # trigger key left
+#    e = jQuery.Event 'keydown'
+#    e.which = 37
+#    $(document).trigger e;
+#    
+#    expect(slidr.current_slide).toEqual(slidr.items.length-1)
+#  
+#  it 'slide right', ->
+#    # trigger key left
+#    e = jQuery.Event('keydown')
+#    e.which = 39
+#    $(document).trigger e;
+#  
+#    expect(slidr.current_slide).toEqual(1)
