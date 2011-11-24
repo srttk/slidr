@@ -12,7 +12,6 @@
     
     // default settings
     var defaults = {
-      content       : null,
       width         : 800,
       height        : 500,
       thumb_width   : 75,
@@ -52,7 +51,7 @@
       attach_event_handlers();
       
       // set current thumb
-      currnet_thumb();
+      set_current_thumb();
       
     };
     
@@ -121,7 +120,7 @@
     
     // private
     // set current thumbnail
-    var currnet_thumb = function() {
+    var set_current_thumb = function() {
       plugin.thumb_items.removeClass('current').eq(plugin.current_slide).addClass('current');
     };
     
