@@ -66,18 +66,6 @@ describe 'check styles', ->
   
   it 'check slidr height', ->
     expect(slidr.el.height()).toEqual(300)
-  
-  it 'check overflow', ->
-    expect(slidr.el.css('overflow')).toEqual('hidden')
-  
-  it 'check position', ->
-    expect(slidr.el.css('position')).toEqual('relative')
-  
-  it 'check list item position', ->
-    expect(slidr.items.css('top')).toEqual('0px')
-  
-  it 'check z-index', ->
-    expect(slidr.items.eq(0).css('zIndex')).toEqual(slidr.items.length.toString())
 
 # variables
 describe 'check variables', ->

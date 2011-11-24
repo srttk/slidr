@@ -72,16 +72,8 @@
       
       // set image container style
       plugin.el.css({
-        position  : 'relative',
         width     : plugin.settings.width+'px',
-        height    : plugin.settings.height+'px',
-        overflow  : 'hidden'
-      });
-      
-      // set list item styles
-      plugin.el.children().css({
-        position  : 'absolute',
-        top       : 0
+        height    : plugin.settings.height+'px'
       });
       
     };
