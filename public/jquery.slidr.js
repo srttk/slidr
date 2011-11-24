@@ -18,7 +18,7 @@
       thumb_height  : 75
     };
     
-    // use the plugin var to access the modalw object everywhere
+    // use the plugin var to access the object everywhere
     var plugin = this;
     
     // object to hold the merged default and user-provided options
@@ -124,9 +124,27 @@
       plugin.thumb_items.removeClass('current').eq(plugin.current_slide).addClass('current');
     };
     
+    
+    
+    // PUBLIC METHODS
+    
+    // Go to slide with index 
+    this.goto_slide = function(index) {
+      
+    }
+    
+    // Go to next slide
+    this.goto_next = function() {
+      
+    }
+    
+    // Go to previous slide
+    this.goto_prev = function() {
+      
+    }
+
     // call the "constructor"
     init();
-    
   };
   
 })(jQuery);
