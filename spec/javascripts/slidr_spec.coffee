@@ -112,7 +112,11 @@ describe 'event handlers', ->
   it 'image click', ->
     slidr.el.click()
     expect(slidr.current_slide).toEqual(1);
-
+  
+  it 'thumbnail click', ->
+    $(slidr.thumbs.el.children()[2]).click();
+    expect(slidr.current_slide).toEqual(2);
+    
 describe 'public methods', ->
   
   template 'markup.html'
