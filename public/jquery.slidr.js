@@ -49,9 +49,10 @@
       
       // attach event handlers
       attach_event_handlers();
-      
-      // set current thumb to the current slide
-      set_current_thumb(plugin.current_slide);
+
+      // set current slide 
+      set_current_slide(plugin.current_slide);
+
       
     };
     
@@ -60,7 +61,7 @@
     var create_elements = function() {
       
       // create wrapper
-      plugin.el.wrap('<div class="slidr-wrapper" />');
+      plugin.el.addClass("slidr-slides").wrap('<div class="slidr-wrapper" />');
       
       // create thumbnails
       plugin.el.clone().appendTo(plugin.el.parent()).attr('class', 'slidr-thumbs');
