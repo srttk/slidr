@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>slidr</title>
+	<style type="text/css">
+		/* Reset */
+		html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+		abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+		small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+		fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+		article, aside, canvas, details, figcaption, figure,  footer, header, hgroup, 
+		menu, nav, section, summary, time, mark, audio, video {
+			margin:0;
+			padding:0;
+			border:0;
+			outline:0;
+			font-size:100%;
+			vertical-align:baseline;
+			background:transparent;
+		}                  
+		article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { 
+			display:block;
+		}
+		
+		ul { list-style: none; }
+		li { cursor: pointer; }
+		.current { border: 2px solid #f00 }
+		
+		.slidr-thumbs li { float: left; margin: 0 5px 0 0; }
+		
+	</style>
+
+</head>
+
+<body>
+
+<ul id="example1">
+	<li><img src="500x300/1.jpg" /></li>
+	<li><img src="500x300/2.jpg" /></li>
+	<li><img src="500x300/3.jpg" /></li>
+	<li><img src="500x300/4.jpg" /></li>
+</ul>
+
+<script src="jquery-1.7.1.js"></script>
+<script src="jquery.slidr.js"></script>
+<script>
+  var slidr = new $.slidr($('#example1'), {
+    speed         : 1000,
+    width         : 500,
+    height        : 300,
+    thumb_width   : 100,
+    thumb_height  : 100
+  });
+</script>
+
+</body>
+</html>
