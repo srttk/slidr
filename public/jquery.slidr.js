@@ -80,20 +80,6 @@
         overflow  : 'hidden'
       });
       
-      // set list item styles
-      plugin.el.children().css({
-        position  : 'absolute',
-        top       : 0
-      }).each(function(i) {
-        
-        // set z-index
-        // start z-index value from total length
-        $(this).css('zIndex', plugin.items.length-i);
-        
-      });
-      
-
-      
     };
     
     // private
