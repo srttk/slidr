@@ -201,7 +201,7 @@
     
     var init = function() {
       create_elements();
-    }
+    };
     
     // create the elements
     var create_elements = function() {
@@ -222,7 +222,7 @@
         width   : settings.thumb_width+'px',
         height  : settings.thumb_height+'px'
       });
-    }
+    };
     
     // set current thumbnail to the current slide
     this.set_current_thumb = function(index) { 
@@ -231,6 +231,6 @@
     };
     
     init();
-  }
+  };
   
 })(jQuery);
