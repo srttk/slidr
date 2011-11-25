@@ -149,6 +149,10 @@ describe 'public methods', ->
   it 'prev slide', ->
     slidr.goto_prev()
     expect(slidr.current_slide).toEqual(slidr.items.length-1)
+    
+  it 'go to specific slide', ->
+    slidr.goto_slide(3)
+    expect(slidr.get_current_slide()).toEqual(3)
   
   it 'get current slide', ->
     expect(slidr.get_current_slide()).toEqual(0)
@@ -175,7 +179,7 @@ describe 'transitions', ->
     it 'should run before method when slide changes', ->
       slidr.goto_next()
       expect(slidr.transitions.before).wasCalled()
-
+      
 
 #describe 'keys', ->
 #  
