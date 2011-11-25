@@ -30,10 +30,27 @@ $.slidr_thumbnails = function(plugin, options) {
     self.el.removeAttr('id');
 
     // set thumb list elements and its children to settings width and height
-    self.thumb_items.add(self.thumb_items.children()).css({
+    self.thumb_items.css({
       width   : settings.thumb_width+'px',
       height  : settings.thumb_height+'px'
+    }).children('img').each(function() {
+      
+      //check ratio
+      
+      var this_width = parseInt($(this).width(), 10),
+          this_height = parseInt($(this).height(), 10),
+          width = this_width > this_height ? '100%' : 'auto',
+          height = this_height > this_width ? '100%' : 'auto';
+      
+      $(this).css({
+        width     : width,
+        height    : height,
+        maxWidth  : settings.thumb_width+'px',
+        maxHeight : settings.thumb_height+'px'
+        
+      });
     });
+    
   };
   
   // attach event handlers
