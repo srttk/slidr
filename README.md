@@ -79,4 +79,4 @@ Tests are runned with [Evergreen](https://github.com/jnicklas/evergreen)
 jQuery
 
 ## Browser support
-Tested and works in IE7, IE8, IE9, Chrome (14), FireFox (7), Opera (11)
+Tested and works in IE6, IE7, IE8, IE9, Chrome (14), FireFox (7), Opera (11)
