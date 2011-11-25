@@ -27,6 +27,8 @@ var slidr = new $.slidr($('#example1'), {
     thumb_width: 75, // max thumb width
     thumb_height: 75, // max thumb height
     
+    speed: 500, // transition speed
+    
     // modules
     thumbs: $.slidr_thumbnails, // define thumbnails
     transitions: $.slidr_transitions, // define slide transition
@@ -50,7 +52,7 @@ slidr.goto_next();
 // Go to previous slide
 slidr.goto_prev();
 
-// Got to slide number (start from 0)
+// Go to slide number (start from 0)
 slidr.goto_slide(1);
 
 // Autoslide start - set interval to 2 seconds
@@ -66,8 +68,8 @@ slidr.is_auto_slide_playing();
 // get current slide
 slidr.get_current_slide();
 
-// get slide dom element
-slidr.get_slide(1);
+// get slide dom element by index
+slidr.get_slide(2);
 ```
 
 ## Tests
