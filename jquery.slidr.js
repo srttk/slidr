@@ -86,10 +86,20 @@
       
       // center images vertically
       plugin.items.children('img').each(function() {
-        $(this).css({
-          top: ((plugin.settings.height - $(this).height()) / 2)
-        });
+        if( this.complete ) {
+          center_image($(this));
+        } else {
+          $(this).load(function() {
+            center_image($(this));
+          });
+        }
       });
+      
+      function center_image(image) {
+        image.css({
+          top: (plugin.settings.height/2) - (image.height()/2)
+        }).parent().addClass('slidr-slide-loaded');
+      }
       
     };
     
