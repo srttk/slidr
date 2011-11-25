@@ -130,16 +130,7 @@
         plugin.transitions.before(new_index);
     };
     
-    // Do stuff after slide change
-    var after_slide = function(old_index) {
-      // run after callback
-      plugin.settings.after_slide_change_callback.call(plugin, old_index);
-      
-      // run transitions
-      if (plugin.transitions)
-        plugin.transitions.after(old_index);
-    };
-    
+
     // set the current slide to current
     var set_current_slide = function(index) {
       // before slide functionality
@@ -152,8 +143,6 @@
       if (plugin.thumbs)
         plugin.thumbs.set_current_thumb(plugin.current_slide);
 
-      // after slide functionality
-      after_slide(index);
     };
     
     // PUBLIC METHODS
@@ -218,6 +207,11 @@
       return plugin.current_slide;
     };
     
+    // get slide by index
+    this.get_slide = function(index) {
+      return plugin.items[index];
+    }
+
     // center image vertically
     this.center_image = function(image, parent_height) {
       image.css({
