@@ -49,9 +49,13 @@ $.slidr_thumbnails = function(plugin, options) {
        
       });
       
-      //$(this).css({
-      //   top       : org_width > org_height ? (settings.thumb_height/2) - ($(this).height()/2) : '0'
-      //});
+      if( this.complete ) {
+        plugin.center_image($(this), plugin.settings.thumb_height);
+      } else {
+        $(this).load(function() {
+          plugin.center_image($(this), plugin.settings.thumb_height);
+        });
+      }
       
     });
     

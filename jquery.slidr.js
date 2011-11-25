@@ -87,19 +87,13 @@
       // center images vertically
       plugin.items.children('img').each(function() {
         if( this.complete ) {
-          center_image($(this));
+          plugin.center_image($(this), plugin.settings.height);
         } else {
           $(this).load(function() {
-            center_image($(this));
+            plugin.center_image($(this), plugin.settings.height);
           });
         }
       });
-      
-      function center_image(image) {
-        image.css({
-          top: (plugin.settings.height/2) - (image.height()/2)
-        }).parent().addClass('slidr-slide-loaded');
-      }
       
     };
     
@@ -222,6 +216,13 @@
     // get current slide
     this.get_current_slide = function() {
       return plugin.current_slide;
+    };
+    
+    // center image vertically
+    this.center_image = function(image, parent_height) {
+      image.css({
+        top : (parent_height/2) - (image.height()/2)
+      }).parent().addClass('slidr-slide-loaded');
     };
     
     // call the "constructor"
