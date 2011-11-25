@@ -26,7 +26,6 @@ var slidr = new $.slidr($('#example1'), {
     height: 500, // max slide height
     thumb_width: 75, // max thumb width
     thumb_height: 75, // max thumb height
-    slide_interval: 2500, // slide interval
     
     // modules
     thumbs: $.slidr_thumbnails, // define thumbnails
@@ -54,8 +53,8 @@ slidr.goto_prev();
 // Got to slide number (start from 0)
 slidr.goto_slide(1);
 
-// Autoslide start
-slidr.auto_slide_start();
+// Autoslide start - set interval to 2 seconds
+slidr.auto_slide_start(2000);
 
 // Autoslide stop
 slidr.auto_slide_stop();
