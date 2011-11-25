@@ -93,10 +93,20 @@ describe 'event handlers', ->
   template 'markup.html'
   
   # define var in scope
-  slidr =
+  slidr = null
+    
+  window.before_callback = -> 
+  window.after_callback = -> 
   
   beforeEach ->
-    slidr = new $.slidr $('#example1'), { width: 500, height: 300 }
+    spyOn(window, "before_callback")
+    spyOn(window, "after_callback")
+    slidr = new $.slidr $('#example1'), { 
+      width: 500
+      height: 300
+      before_slide_change_callback: window.before_callback
+      after_slide_change_callback: window.after_callback 
+    }
   
   it 'image click', ->
     slidr.el.click()
@@ -106,12 +116,20 @@ describe 'event handlers', ->
     $(slidr.thumbs.el.children()[2]).click();
     expect(slidr.current_slide).toEqual(2);
     
+  it 'should run the before slide change callback', ->
+    $(slidr.thumbs.el.children()[4]).click()    
+    expect(window.before_callback).wasCalled()
+
+  it 'should run the after slide change callback', ->
+    $(slidr.thumbs.el.children()[4]).click()    
+    expect(window.after_callback).wasCalled()
+    
 describe 'public methods', ->
   
   template 'markup.html'
   
   # define var in scope
-  slidr =
+  slidr = null
   
   beforeEach ->
     slidr = new $.slidr $('#example1')

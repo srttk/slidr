@@ -12,12 +12,14 @@
     
     // default settings
     var defaults = {
-      width           : 800,
-      height          : 500,
-      thumb_width     : 75,
-      thumb_height    : 75,
-      slide_interval  : 2500,
-      thumbs          : $.slidr_thumbnails
+      width: 800,
+      height: 500,
+      thumb_width: 75,
+      thumb_height: 75,
+      slide_interval: 2500,
+      thumbs: $.slidr_thumbnails,
+      before_slide_change_callback: function() {},
+      after_slide_change_callback: function() {}
     };
     
     // use the plugin var to access the object everywhere
@@ -92,6 +94,8 @@
     
     // set the current slide to current
     var set_current_slide = function(index) {
+      // run before callback
+      plugin.settings.before_slide_change_callback.call(plugin)
       
       // remove class current from all the slides
       plugin.items.removeClass("current");
@@ -101,6 +105,9 @@
       
       // update thumb
       plugin.thumbs.set_current_thumb(index);
+      
+      // run after callback
+      plugin.settings.after_slide_change_callback.call(plugin)
       
     };
     
