@@ -13,8 +13,10 @@ An extendable slider.
 Include the scripts in your project.
 
 ```javascript
-var a = new respimg({breakpoint:800});
-a.run();
+var slidr = new $.slidr($('#example1'), {
+  width: 800, // max slide width
+  height: 500 // max slide height
+});
 ```
 
 ## Options
