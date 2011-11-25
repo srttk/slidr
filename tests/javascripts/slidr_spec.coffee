@@ -162,7 +162,13 @@ describe 'public methods', ->
   it 'is auto slide playing', ->
     slidr.auto_slide_start()
     expect(slidr.is_auto_slide_playing()).toBeTruthy()
-
+  
+  it 'auto slide start', ->
+    expect(slidr.auto_slide_start()).toBeTruthy()
+  
+  it 'auto slide stop', ->
+    expect(slidr.auto_slide_stop()).toBeTruthy()
+  
 # Transitions module
 describe 'transitions', ->
   
