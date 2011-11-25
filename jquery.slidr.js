@@ -130,19 +130,7 @@
         plugin.transitions.before(new_index);
     };
     
-<<<<<<< HEAD
-=======
-    // Do stuff after slide change
-    var after_slide = function(old_index) {
-      // run after callback
-      plugin.settings.after_slide_change_callback.call(plugin, old_index);
-      
-      // run transitions
-      if (plugin.transitions)
-        plugin.transitions.after(old_index);
-    };
-    
->>>>>>> f7639064e01688ea02c05649a79ec0ef463ad05a
+
     // set the current slide to current
     var set_current_slide = function(index) {
       // before slide functionality
