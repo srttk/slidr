@@ -110,41 +110,39 @@
     };
     
     // Do stuff before slide change
-    var before_slide = function() {
+    var before_slide = function(new_index) {
       // run before callback
-      plugin.settings.before_slide_change_callback.call(plugin);
+      plugin.settings.before_slide_change_callback.call(plugin, new_index);
       
       // run transitions
       if (plugin.transitions)
-        plugin.transitions.before();
+        plugin.transitions.before(new_index);
     }
     
     // Do stuff after slide change
-    var after_slide = function() {
+    var after_slide = function(old_index) {
       // run after callback
-      plugin.settings.after_slide_change_callback.call(plugin);
+      plugin.settings.after_slide_change_callback.call(plugin, old_index);
       
       // run transitions
       if (plugin.transitions)
-        plugin.transitions.after();
+        plugin.transitions.after(old_index);
     }
     
     // set the current slide to current
     var set_current_slide = function(index) {
       // before slide functionality
-      before_slide();
-      
-      // remove class current from all the slides
-      plugin.items.removeClass("current");
-      
-      // add class current to the slide that should be showing
-      $(plugin.items[index]).addClass("current");
+      before_slide(index);
+
+      // set current slide to new index
+      plugin.current_slide = index;
       
       // update thumb
-      plugin.thumbs.set_current_thumb(index);
+      if (plugin.thumbs)
+        plugin.thumbs.set_current_thumb(plugin.current_slide);
 
       // after slide functionality
-      after_slide();
+      after_slide(index);
     };
     
     // PUBLIC METHODS
