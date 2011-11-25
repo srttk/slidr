@@ -65,6 +65,9 @@ slidr.is_auto_slide_playing();
 
 // get current slide
 slidr.get_current_slide();
+
+// get slide dom element
+slidr.get_slide(1);
 ```
 
 ## Tests
