@@ -35,8 +35,7 @@ $.slidr_thumbnails = function(plugin, options) {
       height  : settings.thumb_height+'px'
     }).children('img').each(function() {
       
-      //check ratio
-      
+      //check image ratio and apply proper styles
       var this_width = parseInt($(this).width(), 10),
           this_height = parseInt($(this).height(), 10),
           width = this_width > this_height ? '100%' : 'auto',
@@ -47,8 +46,8 @@ $.slidr_thumbnails = function(plugin, options) {
         height    : height,
         maxWidth  : settings.thumb_width+'px',
         maxHeight : settings.thumb_height+'px'
-        
       });
+      
     });
     
   };
