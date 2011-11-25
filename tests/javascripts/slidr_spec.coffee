@@ -156,6 +156,9 @@ describe 'public methods', ->
   
   it 'get current slide', ->
     expect(slidr.get_current_slide()).toEqual(0)
+
+  it 'get slide', ->
+    expect($(slidr.get_slide(1)).length).toEqual(1)
   
   it 'is auto slide playing', ->
     expect(slidr.is_auto_slide_playing()).toBeFalsy()
@@ -163,7 +166,13 @@ describe 'public methods', ->
   it 'is auto slide playing', ->
     slidr.auto_slide_start()
     expect(slidr.is_auto_slide_playing()).toBeTruthy()
-
+  
+  it 'auto slide start', ->
+    expect(slidr.auto_slide_start()).toBeTruthy()
+  
+  it 'auto slide stop', ->
+    expect(slidr.auto_slide_stop()).toBeTruthy()
+  
 # Transitions module
 describe 'transitions', ->
   
@@ -179,30 +188,3 @@ describe 'transitions', ->
     it 'should run before method when slide changes', ->
       slidr.goto_next()
       expect(slidr.transitions.before).wasCalled()
-      
-
-#describe 'keys', ->
-#  
-#  template 'markup.html'
-#  
-#  # define var in scope
-#  slidr =
-#  
-#  beforeEach ->
-#    slidr = new $.slidr $('#example1'), { width: 500, height: 300 }
-#  
-#  it 'slide left', ->
-#    # trigger key left
-#    e = jQuery.Event 'keydown'
-#    e.which = 37
-#    $(document).trigger e;
-#    
-#    expect(slidr.current_slide).toEqual(slidr.items.length-1)
-#  
-#  it 'slide right', ->
-#    # trigger key left
-#    e = jQuery.Event('keydown')
-#    e.which = 39
-#    $(document).trigger e;
-#  
-#    expect(slidr.current_slide).toEqual(1)
