@@ -52,7 +52,7 @@ slidr.goto_next();
 // Go to previous slide
 slidr.goto_prev();
 
-// Got to slide number (start from 0)
+// Go to slide number (start from 0)
 slidr.goto_slide(1);
 
 // Autoslide start - set interval to 2 seconds
@@ -67,6 +67,10 @@ slidr.is_auto_slide_playing();
 
 // get current slide
 slidr.get_current_slide();
+
+// get slide by index
+slidr.get_slide(2);
+
 ```
 
 ## Tests
