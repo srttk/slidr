@@ -2,6 +2,7 @@
 require '/jquery-1.7.1.js'
 require '/jquery.slidr.js'
 require '/jquery.slidr.thumbnails.js'
+require '/jquery.slidr.transitions.js'
 
 # settings
 describe 'settings', ->
@@ -151,6 +152,26 @@ describe 'public methods', ->
   it 'is auto slide playing', ->
     slidr.auto_slide_start()
     expect(slidr.is_auto_slide_playing()).toBeTruthy()
+
+# Transitions module
+describe 'transitions', ->
+  
+    template 'markup.html'
+    
+    slidr = null
+    
+    beforeEach ->
+      slidr = new $.slidr $('#example1')
+      spyOn(slidr.transitions, "before")
+      spyOn(slidr.transitions, "after")
+      
+    it 'should run before method when slide changes', ->
+      slidr.goto_next()
+      expect(slidr.transitions.before).wasCalled()
+      
+    it 'should run after method when slide changes', ->
+      slidr.goto_next()
+      expect(slidr.transitions.after).wasCalled()
 
 #describe 'keys', ->
 #  

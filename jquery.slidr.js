@@ -17,7 +17,10 @@
       thumb_width: 75,
       thumb_height: 75,
       slide_interval: 2500,
+      // modules
       thumbs: $.slidr_thumbnails,
+      transitions: $.slidr_transitions,
+      // callbacks
       before_slide_change_callback: function() {},
       after_slide_change_callback: function() {}
     };
@@ -45,8 +48,11 @@
       // create elements
       create_elements();
       
-      // Run thumbs
+      // Init thumbs
       plugin.thumbs = new plugin.settings.thumbs(plugin, options);
+      
+      // Init transitions
+      plugin.transitions = new plugin.settings.transitions(plugin, options);
       
       // set element styles
       set_styles();
@@ -110,10 +116,30 @@
       
     };
     
+    // Do stuff before slide change
+    var before_slide = function() {
+      // run before callback
+      plugin.settings.before_slide_change_callback.call(plugin);
+      
+      // run transitions
+      if (plugin.transitions)
+        plugin.transitions.before();
+    }
+    
+    // Do stuff after slide change
+    var after_slide = function() {
+      // run after callback
+      plugin.settings.after_slide_change_callback.call(plugin);
+      
+      // run transitions
+      if (plugin.transitions)
+        plugin.transitions.after();
+    }
+    
     // set the current slide to current
     var set_current_slide = function(index) {
-      // run before callback
-      plugin.settings.before_slide_change_callback.call(plugin)
+      // before slide functionality
+      before_slide();
       
       // remove class current from all the slides
       plugin.items.removeClass("current");
@@ -123,10 +149,9 @@
       
       // update thumb
       plugin.thumbs.set_current_thumb(index);
-      
-      // run after callback
-      plugin.settings.after_slide_change_callback.call(plugin)
-      
+
+      // after slide functionality
+      after_slide();
     };
     
     // PUBLIC METHODS
