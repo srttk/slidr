@@ -51,11 +51,11 @@
       
       // Init thumbs
       if (plugin.settings.thumbs)
-        plugin.thumbs = new plugin.settings.thumbs(plugin, options);
+        plugin.thumbs = new plugin.settings.thumbs(plugin, plugin.settings);
       
       // Init transitions
       if (plugin.settings.transitions)
-        plugin.transitions = new plugin.settings.transitions(plugin, options);
+        plugin.transitions = new plugin.settings.transitions(plugin, plugin.settings);
       
       // set element styles
       set_styles();
