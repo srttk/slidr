@@ -1,7 +1,7 @@
 // Transitions for the slider
 $.slidr_transitions = function(plugin, options) {
   this.plugin = plugin;
-  this.fade = 300;
+  this.speed = 500;
 };
 
 // Before transition
@@ -22,12 +22,11 @@ $.slidr_transitions.prototype.do_transition = function(old_index) {
   this.plugin.items.removeClass("to_be_current current");
   
   // add class current to the current slide and do animation on opacity
-  $(this.plugin.items[this.plugin.current_slide]).css({"opacity": 0}).addClass("current").animate({"opacity": 1}, function() {
+  $(this.plugin.items[this.plugin.current_slide]).css({"opacity": 0}).addClass("current").animate({"opacity": 1}, this.speed, function() {
 
     // after slide functionality
     plugin.settings.after_slide_change_callback.call(plugin);
 
-  }, this.speed);
-  
+  });
 
 };
