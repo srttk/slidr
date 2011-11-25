@@ -16,6 +16,7 @@
       height: 500,
       thumb_width: 75,
       thumb_height: 75,
+      speed: 500,
       slide_interval: 2500,
       // modules
       thumbs: $.slidr_thumbnails,

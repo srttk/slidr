@@ -1,7 +1,7 @@
 // Transitions for the slider
 $.slidr_transitions = function(plugin, options) {
   this.plugin = plugin;
-  this.speed = 500;
+  this.speed = options.speed || null;
 };
 
 // Before transition
