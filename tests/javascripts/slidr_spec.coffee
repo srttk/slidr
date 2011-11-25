@@ -97,6 +97,7 @@ describe 'event handlers', ->
   slidr = null
     
   window.before_callback = -> 
+  
   window.after_callback = -> 
   
   beforeEach ->
@@ -122,8 +123,14 @@ describe 'event handlers', ->
     expect(window.before_callback).wasCalled()
 
   it 'should run the after slide change callback', ->
-    $(slidr.thumbs.el.children()[4]).click()    
-    expect(window.after_callback).wasCalled()
+    
+    runs ->
+      $(slidr.thumbs.el.children()[4]).click()
+    
+    waits 500    
+    
+    runs ->
+      expect(window.after_callback).wasCalled()
     
 describe 'public methods', ->
   
@@ -163,15 +170,12 @@ describe 'transitions', ->
     beforeEach ->
       slidr = new $.slidr $('#example1')
       spyOn(slidr.transitions, "before")
-      spyOn(slidr.transitions, "after")
+      # spyOn(slidr.transitions, "do_transition")
       
     it 'should run before method when slide changes', ->
       slidr.goto_next()
       expect(slidr.transitions.before).wasCalled()
-      
-    it 'should run after method when slide changes', ->
-      slidr.goto_next()
-      expect(slidr.transitions.after).wasCalled()
+
 
 #describe 'keys', ->
 #  
