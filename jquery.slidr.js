@@ -134,7 +134,7 @@
       // run transitions
       if (plugin.transitions)
         plugin.transitions.before(new_index);
-    }
+    };
     
     // Do stuff after slide change
     var after_slide = function(old_index) {
@@ -144,7 +144,7 @@
       // run transitions
       if (plugin.transitions)
         plugin.transitions.after(old_index);
-    }
+    };
     
     // set the current slide to current
     var set_current_slide = function(index) {
