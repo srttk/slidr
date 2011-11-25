@@ -152,6 +152,9 @@ describe 'public methods', ->
   
   it 'get current slide', ->
     expect(slidr.get_current_slide()).toEqual(0)
+
+  it 'get slide', ->
+    expect($(slidr.get_slide(1)).length).toEqual(1)
   
   it 'is auto slide playing', ->
     expect(slidr.is_auto_slide_playing()).toBeFalsy()
