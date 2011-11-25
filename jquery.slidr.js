@@ -216,8 +216,8 @@
     // get slide by index
     this.get_slide = function(index) {
       return plugin.items[index];
-    }
-
+    };
+    
     // center image vertically
     this.center_image = function(image, parent_height) {
       image.css({
