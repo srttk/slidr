@@ -49,10 +49,12 @@
       create_elements();
       
       // Init thumbs
-      plugin.thumbs = new plugin.settings.thumbs(plugin, options);
+      if (plugin.settings.thumbs)
+        plugin.thumbs = new plugin.settings.thumbs(plugin, options);
       
       // Init transitions
-      plugin.transitions = new plugin.settings.transitions(plugin, options);
+      if (plugin.settings.transitions)
+        plugin.transitions = new plugin.settings.transitions(plugin, options);
       
       // set element styles
       set_styles();
