@@ -157,11 +157,14 @@
         plugin.goto_next();
       }, plugin.settings.slide_interval);
       
+      return true;
+      
     };
     
     // stop auto slide
     this.auto_slide_stop = function() {
       clearInterval(plugin.autoslide);
+      return true;
     };
     
     // is slider auto playing?
