@@ -27,6 +27,8 @@ var slidr = new $.slidr($('#example1'), {
     thumb_width: 75, // max thumb width
     thumb_height: 75, // max thumb height
     
+    speed: 500, // transition speed
+    
     // modules
     thumbs: $.slidr_thumbnails, // define thumbnails
     transitions: $.slidr_transitions, // define slide transition
