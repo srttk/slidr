@@ -86,9 +86,13 @@
       
       // center images vertically
       plugin.items.children('img').each(function() {
-        $(this).css({
-          top: ((plugin.settings.height - $(this).height()) / 2)
-        });
+        if( this.complete ) {
+          plugin.center_image($(this), plugin.settings.height);
+        } else {
+          $(this).load(function() {
+            plugin.center_image($(this), plugin.settings.height);
+          });
+        }
       });
       
     };
@@ -124,8 +128,21 @@
       // run transitions
       if (plugin.transitions)
         plugin.transitions.before(new_index);
-    }
+    };
     
+<<<<<<< HEAD
+=======
+    // Do stuff after slide change
+    var after_slide = function(old_index) {
+      // run after callback
+      plugin.settings.after_slide_change_callback.call(plugin, old_index);
+      
+      // run transitions
+      if (plugin.transitions)
+        plugin.transitions.after(old_index);
+    };
+    
+>>>>>>> f7639064e01688ea02c05649a79ec0ef463ad05a
     // set the current slide to current
     var set_current_slide = function(index) {
       // before slide functionality
@@ -202,9 +219,17 @@
       return plugin.current_slide;
     };
     
+    // get slide by index
     this.get_slide = function(index) {
       return plugin.items[index];
     }
+
+    // center image vertically
+    this.center_image = function(image, parent_height) {
+      image.css({
+        top : (parent_height/2) - (image.height()/2)
+      }).parent().addClass('slidr-slide-loaded');
+    };
     
     // call the "constructor"
     init();
