@@ -17,7 +17,6 @@
       thumb_width: 75,
       thumb_height: 75,
       speed: 500,
-      slide_interval: 2500,
       // modules
       thumbs: $.slidr_thumbnails,
       transitions: $.slidr_transitions,
@@ -151,17 +150,21 @@
     // PUBLIC METHODS
     
     // start auto slide
-    this.auto_slide_start = function() {
+    this.auto_slide_start = function(interval) {
       
+      // set interval - if no time was passed, use 2.5 second for each interavl
       plugin.autoslide = setInterval(function() {
         plugin.goto_next();
-      }, plugin.settings.slide_interval);
+      }, interval || 2500);
+      
+      return true;
       
     };
     
     // stop auto slide
     this.auto_slide_stop = function() {
       clearInterval(plugin.autoslide);
+      return true;
     };
     
     // is slider auto playing?
