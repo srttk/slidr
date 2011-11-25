@@ -68,9 +68,8 @@ slidr.is_auto_slide_playing();
 // get current slide
 slidr.get_current_slide();
 
-// get slide by index
+// get slide dom element by index
 slidr.get_slide(2);
-
 ```
 
 ## Tests
@@ -80,4 +79,4 @@ Tests are runned with [Evergreen](https://github.com/jnicklas/evergreen)
 jQuery
 
 ## Browser support
-Tested and works in IE7, IE8, IE9, Chrome (14), FireFox (7), Opera (11)
+Tested and works in IE6, IE7, IE8, IE9, Chrome (15), FireFox (8), Opera (11)

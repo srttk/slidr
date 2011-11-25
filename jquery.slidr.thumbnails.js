@@ -38,8 +38,8 @@ $.slidr_thumbnails = function(plugin, options) {
       //check image ratio and apply proper styles
       var org_width = parseInt($(this).width(), 10),
           org_height = parseInt($(this).height(), 10),
-          width = org_width > org_height ? '100%' : 'auto',
-          height = org_height > org_width ? '100%' : 'auto';
+          width = org_width >= org_height ? '100%' : 'auto',
+          height = org_height >= org_width ? '100%' : 'auto';
       
       $(this).css({
         width     : width,
