@@ -84,6 +84,13 @@
         height    : plugin.settings.height+'px'
       });
       
+      // center images vertically
+      plugin.items.children('img').each(function() {
+        $(this).css({
+          top: ((plugin.settings.height - $(this).height()) / 2)
+        });
+      });
+      
     };
     
     // private
