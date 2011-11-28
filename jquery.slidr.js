@@ -14,7 +14,13 @@
     var defaults = {
       width: 800,
       height: 500,
+      // Speed for the transition
       speed: 500,
+      // Should we be able to navigate the slides with left/right-keys or with the mouse clicking on a slide?
+      navigation: {
+        keys: true,
+        mouse: true
+      },
       // modules
       thumbs: $.slidr_thumbnails,
       transitions: $.slidr_transitions,
@@ -31,7 +37,7 @@
     var init = function() {
       
       // merge default and user-provided options
-      plugin.settings = $.extend(defaults, options);
+      plugin.settings = $.extend(true, defaults, options);
       
       // make the collection of target elements available throughout the plugin
       // by making it a public property
@@ -101,22 +107,26 @@
     // attach event handlers
     var attach_event_handlers = function() {
       
-      plugin.el.click(function() {
-        
-        plugin.goto_next();
-        
-      });
+      // Should we be able to go to next slide by clicking the main element?
+      if (plugin.settings.navigation.mouse) {
+        plugin.el.click(function() {
+          plugin.goto_next();
+        });
+      }
       
-      $(document).keydown(function(e) {
-        switch (e.keyCode) {
-          case 37: // Left arrow key
-            plugin.goto_prev();
-          break;
-          case 39: // Right arrow key
-            plugin.goto_next();
-          break; 
-        }
-      });
+      // Should we be able to navigate with left/right-arrows?
+      if (plugin.settings.navigation.keys) {
+        $(document).keydown(function(e) {
+          switch (e.keyCode) {
+            case 37: // Left arrow key
+              plugin.goto_prev();
+            break;
+            case 39: // Right arrow key
+              plugin.goto_next();
+            break; 
+          }
+        });
+      }
       
     };
     
