@@ -29,6 +29,12 @@ var slidr = new $.slidr($('#example1'), {
     
     speed: 500, // transition speed
     
+    // navigation options, enabled by default
+    navigation: {
+      keys: true, // left/right-arrow navigation
+      mouse: true // click on element to go to next slide
+    }
+    
     // modules
     thumbs: $.slidr_thumbnails, // define thumbnails
     transitions: $.slidr_transitions, // define slide transition
