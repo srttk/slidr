@@ -14,8 +14,6 @@
     var defaults = {
       width: 800,
       height: 500,
-      thumb_width: 75,
-      thumb_height: 75,
       speed: 500,
       // modules
       thumbs: $.slidr_thumbnails,
