@@ -1,7 +1,8 @@
 $.slidr_thumbnails = function(plugin, options) {
   var defaults = {
-    thumb_width   : 75,
-    thumb_height  : 75
+    thumb_width: 75,
+    thumb_height: 75,
+    thumb_clickable: true
   };
   var settings = $.extend(defaults, options);
   
@@ -68,16 +69,18 @@ $.slidr_thumbnails = function(plugin, options) {
   
   // attach event handlers
   var attach_event_handlers = function() {
-    // go to slide when clicking on the thumbs
-    $("li", self.el).bind("click", function() {
-      var el = this;
-      // loop els to find the current index
-      $("li", self.el).each(function(i) {
-        if (el == this) {
-          plugin.goto_slide(i);
-        }
+    // go to slide when clicking on the thumbs if thumb are clickable
+    if (settings.thumb_clickable) {
+      $("li", self.el).bind("click", function() {
+        var el = this;
+        // loop els to find the current index
+        $("li", self.el).each(function(i) {
+          if (el == this) {
+            plugin.goto_slide(i);
+          }
+        });
       });
-    });
+    }
   };
   
   // set current thumbnail to the current slide

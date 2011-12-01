@@ -14,12 +14,10 @@
     var defaults = {
       width: 800,
       height: 500,
-      // Speed for the transition
-      speed: 500,
-      // Should we be able to navigate the slides with left/right-keys or with the mouse clicking on a slide?
+      speed: 500, // Speed for the transition
       navigation: {
-        keys: true,
-        mouse: true
+        keys: true, // navigate with left and right arrow key
+        mouse: true // go to next slide on slide click
       },
       // modules
       thumbs: $.slidr_thumbnails,

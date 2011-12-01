@@ -8,7 +8,7 @@ require '/jquery.slidr.transitions.js'
 describe 'settings', ->
   
   # define var in scope
-  slidr =
+  slidr = null
   
   beforeEach ->
     slidr = new $.slidr $('#example1'), { width: 500, height: 300, thumb_width: 100, thumb_height: 100 }
@@ -31,7 +31,7 @@ describe 'elements', ->
   template 'markup.html'
   
   # define var in scope
-  slidr =
+  slidr = null
   
   beforeEach ->
     slidr = new $.slidr $('#example1'), { thumb_width: 100, thumb_height: 100 }
@@ -57,7 +57,7 @@ describe 'check styles', ->
   template 'markup.html'
   
   # define var in scope
-  slidr =
+  slidr = null
   
   beforeEach ->
     slidr = new $.slidr $('#example1'), { width: 500, height: 300 }
@@ -74,7 +74,7 @@ describe 'check variables', ->
   template 'markup.html'
   
   # define var in scope
-  slidr =
+  slidr = null
   
   beforeEach ->
     slidr = new $.slidr $('#example1'), { width: 500, height: 300 }
