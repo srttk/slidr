@@ -25,7 +25,8 @@ $.slidr_transitions.prototype.do_transition = function(old_index) {
   $(this.plugin.items[this.plugin.current_slide]).css({"opacity": 0}).addClass("current").animate({"opacity": 1}, this.speed, function() {
 
     // after slide functionality
-    plugin.settings.after_slide_change_callback.call(plugin);
+    if (plugin.settings.after_slide_change_callback)
+      plugin.settings.after_slide_change_callback.call(plugin);
 
   });
 

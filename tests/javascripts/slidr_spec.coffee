@@ -49,7 +49,7 @@ describe 'elements', ->
     expect(slidr.thumbs.el.children().height()).toEqual(slidr.settings.thumb_height)
   
   it 'current thumb', ->
-    expect(slidr.thumbs.el.children().eq(0).attr 'class').toEqual('current');
+    expect(slidr.thumbs.el.children().eq(0).attr 'class').toContain('current');
 
 # check styles
 describe 'check styles', ->
@@ -100,14 +100,19 @@ describe 'event handlers', ->
   
   window.after_callback = -> 
   
+  window.images_loaded_callback = ->
+  
   beforeEach ->
     spyOn(window, "before_callback")
     spyOn(window, "after_callback")
-    slidr = new $.slidr $('#example1'), { 
+    spyOn(window, "images_loaded_callback")
+    
+    slidr = new $.slidr $('#example1'), {
       width: 500
       height: 300
-      before_slide_change_callback: window.before_callback
-      after_slide_change_callback: window.after_callback 
+      before_slide_change_callback: before_callback
+      after_slide_change_callback: after_callback
+      images_loaded: images_loaded_callback
     }
   
   it 'image click', ->
@@ -122,15 +127,20 @@ describe 'event handlers', ->
     $(slidr.thumbs.el.children()[4]).click()    
     expect(window.before_callback).wasCalled()
 
-  it 'should run the after slide change callback', ->
-    
+  it 'should run the after slide change callback', ->  
     runs ->
-      $(slidr.thumbs.el.children()[4]).click()
-    
-    waits 500    
-    
+      $(slidr.thumbs.el.children()[4]).click()   
+    waits 500      
     runs ->
       expect(window.after_callback).wasCalled()
+
+  it 'should run the image load callback', ->
+    waits 500
+    
+    runs ->
+      expect(window.images_loaded_callback).wasCalled()
+      
+      
     
 describe 'public methods', ->
   

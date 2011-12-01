@@ -23,12 +23,16 @@
       thumbs: $.slidr_thumbnails,
       transitions: $.slidr_transitions,
       // callbacks
-      before_slide_change_callback: function() {},
-      after_slide_change_callback: function() {}
+      before_slide_change_callback: null, // triggers before slide change
+      after_slide_change_callback: null, // triggers after slide change
+      images_loaded: null // triggers when all images are loaded
     };
     
     // use the plugin var to access the object everywhere
     var plugin = this;
+    
+    // count the images loaded
+    var image_load_count = 0;
 
     // private
     // the "constructor" that gets called when object is created
@@ -67,6 +71,17 @@
       // set current slide 
       set_current_slide(plugin.current_slide);
       
+      // listen on image load event and trigger image_loaded method
+      plugin.items.children('img').each(function() {
+        if (this.complete) {
+          on_image_load.call(this);
+        } else {
+          $(this).load(function() {
+            on_image_load.call(this);
+          });
+        }
+      });
+      
     };
     
     // private
@@ -87,18 +102,7 @@
         width     : plugin.settings.width+'px',
         height    : plugin.settings.height+'px'
       });
-      
-      // center images vertically
-      plugin.items.children('img').each(function() {
-        if( this.complete ) {
-          plugin.center_image($(this), plugin.settings.height);
-        } else {
-          $(this).load(function() {
-            plugin.center_image($(this), plugin.settings.height);
-          });
-        }
-      });
-      
+
     };
     
     // private
@@ -131,7 +135,8 @@
     // Do stuff before slide change
     var before_slide = function(new_index) {
       // run before callback
-      plugin.settings.before_slide_change_callback.call(plugin, new_index);
+      if (plugin.settings.before_slide_change_callback)
+        plugin.settings.before_slide_change_callback.call(plugin, new_index);
       
       // run transitions
       if (plugin.transitions)
@@ -152,6 +157,23 @@
         plugin.thumbs.set_current_thumb(plugin.current_slide);
 
     };
+    
+    // on image load
+    // this = the image element
+    var on_image_load = function() {
+      // increase image load count variable
+      image_load_count++;
+      
+      // if load count reaches the count of the items: all images are loaded!
+      if (image_load_count == plugin.items.length) {
+        // run the callback!
+        if (plugin.settings.images_loaded)
+          plugin.settings.images_loaded.call(plugin);
+      }
+      
+      // center the images vertically
+      plugin.center_image($(this), plugin.settings.height);
+    }
     
     // PUBLIC METHODS
     
