@@ -4,11 +4,12 @@ $.slidr_thumbnails = function(plugin, options) {
     thumb_height: 75,
     thumb_clickable: true
   };
-  var settings = $.extend(defaults, options);
+  
+  this.settings = $.extend(defaults, options);
   
   // reference to obj
   var self = this;
-  
+
   
   var init = function() {
     create_elements();
@@ -32,8 +33,8 @@ $.slidr_thumbnails = function(plugin, options) {
 
     // set thumb list elements and its children to settings width and height
     self.thumb_items.css({
-      width   : settings.thumb_width+'px',
-      height  : settings.thumb_height+'px'
+      width   : self.settings.thumb_width+'px',
+      height  : self.settings.thumb_height+'px'
     }).children('img').each(function() {
 
       if( this.complete ) {
@@ -59,8 +60,8 @@ $.slidr_thumbnails = function(plugin, options) {
     $(this).css({
       width     : width,
       height    : height,
-      maxWidth  : settings.thumb_width+'px',
-      maxHeight : settings.thumb_height+'px'
+      maxWidth  : self.settings.thumb_width+'px',
+      maxHeight : self.settings.thumb_height+'px'
     });
     
     // center image
@@ -70,7 +71,7 @@ $.slidr_thumbnails = function(plugin, options) {
   // attach event handlers
   var attach_event_handlers = function() {
     // go to slide when clicking on the thumbs if thumb are clickable
-    if (settings.thumb_clickable) {
+    if (self.settings.thumb_clickable) {
       $("li", self.el).bind("click", function() {
         var el = this;
         // loop els to find the current index
